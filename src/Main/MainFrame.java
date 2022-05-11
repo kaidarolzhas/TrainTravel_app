@@ -2,14 +2,14 @@ package Main;
 
 import Frames.Login;
 import Frames.Signup;
-import UserMenu.BuyTicket;
+import UserMenu.FindPlaneTicket;
 import UserMenu.UserMenu;
 
 import javax.swing.*;
 
 public class MainFrame extends JFrame {
     public static MainMenu mainMenu;
-    public static BuyTicket buyTicket;
+    public static FindPlaneTicket findPlaneTicket;
     public static UserMenu userMenu;
     public static Login login;
     public static Signup signup;
@@ -23,10 +23,10 @@ public class MainFrame extends JFrame {
         mainMenu.setLocation(0, 0);
         add(mainMenu);
 
-        buyTicket = new BuyTicket();
-        buyTicket.setLocation(0, 0);
-        buyTicket.setVisible(false);
-        add(buyTicket);
+        findPlaneTicket = new FindPlaneTicket();
+        findPlaneTicket.setLocation(0, 0);
+        findPlaneTicket.setVisible(false);
+        add(findPlaneTicket);
 
         userMenu = new UserMenu();
         userMenu.setLocation(0, 0);
