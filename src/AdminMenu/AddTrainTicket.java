@@ -98,7 +98,8 @@ public class AddTrainTicket extends Container {
 
                 TrainTicket trainTicket = new TrainTicket(
                         null,name, whereFromField.getText(),
-                        whereField.getText(), Integer.parseInt(priceField.getText()),Integer.parseInt(dayField.getText()),(String)typeMonthField.getSelectedItem(),Integer.parseInt(placeField.getText()) ,(String)typeTrainField.getSelectedItem()
+                        whereField.getText(), Integer.parseInt(priceField.getText()),Integer.parseInt(dayField.getText()),
+                        (String)typeMonthField.getSelectedItem(),Integer.parseInt(placeField.getText()),(String)typeTrainField.getSelectedItem()
                 );
                 Package pd = new Package("ADD TRAIN TICKET", trainTicket);
                 Main.connect(pd);

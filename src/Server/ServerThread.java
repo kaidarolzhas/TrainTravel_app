@@ -3,9 +3,12 @@ import Class.Customer;
 import Database.DBManager;
 import Database.Package;
 import Class.TrainTicket;
+import Class.PlaneTicket;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
+
 
 public class ServerThread extends Thread{
     private Socket socket;
@@ -35,13 +38,13 @@ public class ServerThread extends Thread{
                     break;
                     
                 }
-                /*else if(data.getOperationType().equals("Find Type Guitar")){
-                    String findGuitar = manager.findPlaneTicket(data.g);
+                else if(data.getOperationType().equals("Find Plane")){
+                    //ArrayList<PlaneTicket> arrayPercussion = manager.findPlaneTicket(data.getPlaneTickets());
                     Package toPercussion = new Package();
-                    toPercussion.setFind(findGuitar);
+                    //toPercussion.setPercussionInstruments(arrayPercussion);
                     outputStream.writeObject(toPercussion);
                     break;
-                }*/
+                }
             }
         }catch (Exception e){
             e.printStackTrace();

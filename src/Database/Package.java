@@ -1,7 +1,5 @@
 package Database;
 import Class.*;
-
-import java.awt.image.AreaAveragingScaleFilter;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -10,10 +8,12 @@ public class Package implements Serializable {
     private Customer customer;
     private TrainTicket trainTicket;
 
+    private ArrayList<PlaneTicket> planeTickets;
     private ArrayList<TrainTicket> trainTickets;
     private ArrayList<Customer> customers;
 
-
+    public Package() {
+    }
 
     public Package(String operationType) {
         this.operationType = operationType;
@@ -74,5 +74,13 @@ public class Package implements Serializable {
 
     public void setTrainTickets(ArrayList<TrainTicket> trainTickets) {
         this.trainTickets = trainTickets;
+    }
+
+    public ArrayList<PlaneTicket> getPlaneTickets() {
+        return planeTickets;
+    }
+
+    public void setPlaneTickets(ArrayList<PlaneTicket> planeTickets) {
+        this.planeTickets = planeTickets;
     }
 }
