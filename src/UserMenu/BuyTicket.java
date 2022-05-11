@@ -1,7 +1,5 @@
 package UserMenu;
-
 import Main.MainFrame;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -14,10 +12,6 @@ public class BuyTicket extends Container {
 
         String[] typeMonth = {"January", "February", "March", "April", "May", "June", "July", "August", "September",
                 "October", "November", "December"};
-
-        JLabel label = new JLabel("Buy train tickets");
-        label.setBounds(50, 50, 95, 30);
-        add(label);
 
         JLabel whereFromLabel = new JLabel("Where from");
         whereFromLabel.setBounds(50, 100, 95, 30);

@@ -23,28 +23,24 @@ public class MainFrame extends JFrame {
         mainMenu.setLocation(0, 0);
         add(mainMenu);
 
+        buyTicket = new BuyTicket();
+        buyTicket.setLocation(0, 0);
+        buyTicket.setVisible(false);
+        add(buyTicket);
+
+        userMenu = new UserMenu();
+        userMenu.setLocation(0, 0);
+        userMenu.setVisible(false);
+        add(userMenu);
+
         login = new Login();
-        login.setVisible(false);
         login.setLocation(0, 0);
+        login.setVisible(false);
         add(login);
 
         signup = new Signup();
-        signup.setVisible(false);
         signup.setLocation(0, 0);
+        signup.setVisible(false);
         add(signup);
-
-        buyTicket = new BuyTicket();
-        buyTicket.setVisible(false);
-        buyTicket.setLocation(0, 0);
-        add(buyTicket);
-
-
-        userMenu = new UserMenu();
-        userMenu.setVisible(false);
-        userMenu.setLocation(0, 0);
-        add(userMenu);
-
-
-
     }
 }
