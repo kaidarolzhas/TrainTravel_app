@@ -11,15 +11,13 @@ public class MainMenu extends Container {
         setLayout(null);
 
         JLabel welcome = new JLabel("WELCOME TO THE TRAIN TRAVEL");
-        welcome.setBounds(300, 20, 300, 30);
+        welcome.setBounds(110, 20, 380, 30);
         welcome.setFont(new Font("Verdana", Font.BOLD, 20));
         add(welcome);
 
         JLabel tip = new JLabel("LOGIN OR SIGN UP TO CONTINUE");
-        tip.setVerticalAlignment(JLabel.CENTER);
-        welcome.setBounds(100, 40, 300, 30);
-        welcome.setFont(new Font("Verdana", Font.BOLD, 14));
-        tip.setHorizontalAlignment(JLabel.CENTER);
+        tip.setBounds(150, 40, 300, 30);
+        tip.setFont(new Font("Verdana", Font.BOLD, 14));
         add(tip);
 
         JButton logInButton = new JButton("Log in");
@@ -40,6 +38,8 @@ public class MainMenu extends Container {
         logInButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                MainFrame.mainMenu.setVisible(false);
+                MainFrame.login.setVisible(true);
 
             }
         });
@@ -47,6 +47,8 @@ public class MainMenu extends Container {
         singButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                MainFrame.mainMenu.setVisible(false);
+                MainFrame.signup.setVisible(true);
 
             }
         });

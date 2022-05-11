@@ -14,30 +14,10 @@ public class DBManager {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/tannurdb?useUnicode=true&serverTimezone=UTC", "root", "");
+                    "jdbc:mysql://localhost:3306/customer?useUnicode=true&serverTimezone=UTC", "root", "");
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public boolean checkCustomer(String customerLogin, String customer_password) {
-        boolean check = false;
-        try {
-            PreparedStatement statement = connection.prepareStatement("" +
-                    "SELECT * FROM customer WHERE login = '" + customerLogin + "'" + "and password = '" + customer_password + "'");
-            ResultSet resultSet = statement.executeQuery();
-            if(resultSet.next()){
-                check = true;
-            }
-
-
-            statement.executeUpdate();
-            statement.close();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-        return check;
     }
 
 
