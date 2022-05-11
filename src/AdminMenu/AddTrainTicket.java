@@ -1,12 +1,14 @@
 package AdminMenu;
 import Class.TrainTicket;
 import Database.Package;
+import Main.Main;
 import Main.MainFrame;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.Inet4Address;
 
 public class AddTrainTicket extends Container {
     public AddTrainTicket(){
@@ -52,30 +54,56 @@ public class AddTrainTicket extends Container {
         typeMonthField.setBounds(250, 150, 95, 30);
         add(typeMonthField);
 
-        JComboBox typeTrainField = new JComboBox(typeMonth);
-        typeTrainField.setBounds(350, 150, 95, 30);
-        add(typeTrainField);
+        JTextField priceField = new JTextField();
+        priceField.setBounds(450, 150, 95, 30);
+        add(priceField);
+
+
 
         JTextField dayField = new JTextField();
         dayField.setBounds(350, 150, 95, 30);
         add(dayField);
+
+        JLabel nameLabel = new JLabel("Name:");
+        nameLabel.setBounds(50, 200, 95, 30);
+        add(nameLabel);
+
+        JComboBox typeTrainField = new JComboBox(typeTrain);
+        typeTrainField.setBounds(150, 200, 95, 30);
+        add(typeTrainField);
+
+        JLabel placeLabel = new JLabel("Place:");
+        placeLabel.setBounds(50, 300, 95, 30);
+        add(placeLabel);
+
+        JTextField placeField = new JTextField();
+        placeField.setBounds(450, 300, 95, 30);
+        add(placeField);
+
+
+        String name = "Kazakhstan";
+
 
         JButton findButton = new JButton("Add");
         findButton.setBounds(450, 200, 95, 30);
         add(findButton);
 
         JButton backButton = new JButton("Back to menu");
-        backButton.setBounds(50, 200, 150, 30);
+        backButton.setBounds(300, 200, 150, 30);
         add(backButton);
 
         findButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                /*
-                TrainTicket trainTicket = new TrainTicket(null,)
-                Package pd = new Package("ADD TRAIN TICKET", );
 
-                 */
+                TrainTicket trainTicket = new TrainTicket(
+                        null,name, whereFromField.getText(),
+                        whereField.getText(), Integer.parseInt(priceField.getText()),Integer.parseInt(dayField.getText()),(String)typeMonthField.getSelectedItem(),Integer.parseInt(placeField.getText()) ,(String)typeTrainField.getSelectedItem()
+                );
+                Package pd = new Package("ADD TRAIN TICKET", trainTicket);
+                Main.connect(pd);
+
+
 
             }
         });

@@ -66,7 +66,7 @@ public class DBManager {
     public void addPlaneTicket(PlaneTicket planeTicket) {
         try {
             PreparedStatement statement = connection.prepareStatement("" +
-                    "INSERT INTO ticket (id, name, whereFrom, where, price, day, month, place, luggage, typeID) " +
+                    "INSERT INTO ticket (id, name, whereFrom, wheree, price, day, month, place, luggage, typeID) " +
                     "VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             statement.setString(1, planeTicket.getName());
             statement.setString(2, planeTicket.getWhereFrom());
@@ -88,7 +88,7 @@ public class DBManager {
     public void addTrainTicket(TrainTicket trainTicket) {
         try {
             PreparedStatement statement = connection.prepareStatement("" +
-                    "INSERT INTO ticket (id, name, whereFrom, where, price, day, month, place, type, typeID) " +
+                    "INSERT INTO ticket (id, name, whereFrom, wheree, price, day, month, place, type, typeID) " +
                     "VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             statement.setString(1, trainTicket.getName());
             statement.setString(2, trainTicket.getWhereFrom());

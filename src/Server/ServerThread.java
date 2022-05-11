@@ -2,7 +2,7 @@ package Server;
 import Class.Customer;
 import Database.DBManager;
 import Database.Package;
-
+import Class.TrainTicket;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
@@ -29,6 +29,11 @@ public class ServerThread extends Thread{
                     Customer customer = data.getCustomer();
                     manager.addCustomer(customer);
                     break;
+                } else if (data.getOperationType().equals("ADD TRAIN TICKET")) {
+                    TrainTicket trainTicket = data.getTrainTicket();
+                    manager.addTrainTicket(trainTicket);
+                    break;
+                    
                 }
                 /*else if(data.getOperationType().equals("Find Type Guitar")){
                     String findGuitar = manager.findPlaneTicket(data.g);
