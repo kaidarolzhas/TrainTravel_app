@@ -200,7 +200,7 @@ public class DBManager {
         return planeTicketList;
     }
 
-    public ArrayList<TrainTicket> findPlaneTicket(TrainTicket trainTicket){
+    public ArrayList<TrainTicket> findTrainTicket(TrainTicket trainTicket){
         ArrayList<TrainTicket> trainTicketList = new ArrayList<>();
         try{
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM ticket WHERE typeID = 1 AND whereFrom = '" + trainTicket.getWhereFrom() +
