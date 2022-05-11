@@ -83,16 +83,14 @@ public class FindTrainTicket extends Container {
         JButton buyButton = new JButton("BUY");
         buyButton.setBounds(250, 290, 300, 30);
         add(buyButton);
-        //(String)typeField.getSelectedItem(), nameField.getText(),
-        //                            Integer.parseInt(costField.getText())
 
         findButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                TrainTicket trainTicket = new TrainTicket(null, whereFromField.getText(),  whereField.getText(),
-                        Integer.parseInt(dayField.getText()), (String)typeMonthBox.getSelectedItem(), (String)chooseBox.getSelectedItem());
+                TrainTicket trainTicket = new TrainTicket(null, null, whereFromField.getText(),  whereField.getText(),
+                        0, Integer.parseInt(dayField.getText()), (String)typeMonthBox.getSelectedItem(), 0, (String)chooseBox.getSelectedItem());
 
-                Package pd = new Package("Find Train", trainTicket );
+                Package pd = new Package("FIND TRAIN", trainTicket );
                 Main.connect(pd);
             }
         });

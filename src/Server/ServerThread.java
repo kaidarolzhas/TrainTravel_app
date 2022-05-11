@@ -37,20 +37,6 @@ public class ServerThread extends Thread{
                     break;
                     
                 }
-                else if(data.getOperationType().equals("Find Plane")){
-                    ArrayList<PlaneTicket> arrayPlane = manager.findPlaneTicket(data.getPlaneTicket());
-                    Package toPlane = new Package();
-                    toPlane.setPlaneTickets(arrayPlane);
-                    outputStream.writeObject(toPlane);
-                    break;
-                }
-                else if(data.getOperationType().equals("Find Train")){
-                    ArrayList<TrainTicket> arrayTrain = manager.findTrainTicket(data.getTrainTicket());
-                    Package toTrain = new Package();
-                    toTrain.setTrainTickets(arrayTrain);
-                    outputStream.writeObject(toTrain);
-                    break;
-                }
                 else if (data.getOperationType().equals("ADD PLANE TICKET")) {
                     PlaneTicket planeTicket = data.getPlaneTicket();
                     manager.addPlaneTicket(planeTicket);
@@ -72,7 +58,20 @@ public class ServerThread extends Thread{
                     outputStream.writeObject(planeList);
                     break;
                 }
-
+                else if(data.getOperationType().equals("FIND TRAIN")){
+                    ArrayList<TrainTicket> arrayTrain = manager.findTrainTicket(data.getTrainTicket());
+                    Package trainList = new Package();
+                    trainList.setTrainTickets(arrayTrain);
+                    outputStream.writeObject(trainList);
+                    break;
+                }
+                else if(data.getOperationType().equals("FIND PLANE")){
+                    ArrayList<PlaneTicket> arrayPlane = manager.findPlaneTicket(data.getPlaneTicket());
+                    Package planeList = new Package();
+                    planeList.setPlaneTickets(arrayPlane);
+                    outputStream.writeObject(planeList);
+                    break;
+                }
 
             }
         }catch (Exception e){

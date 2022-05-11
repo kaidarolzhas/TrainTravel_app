@@ -8,6 +8,11 @@ public class PlaneTicket extends Ticket implements Serializable {
     public PlaneTicket() {
     }
 
+    public PlaneTicket(Integer id, String whereFrom, String where, int day, String month, String luggage) {
+        super(id, whereFrom, where, day, month);
+        this.luggage = luggage;
+    }
+
     public PlaneTicket(Integer id, String name, String whereFrom, String where, int price, int day, String month, int place, String luggage) {
         super(id, name, whereFrom, where, price, day, month, place);
         this.luggage = luggage;

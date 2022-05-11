@@ -206,7 +206,7 @@ public class DBManager {
         ArrayList<PlaneTicket> planeTicketList = new ArrayList<>();
         try{
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM ticket WHERE typeID = 2 AND whereFrom = '" + planeTicket.getWhereFrom() +
-                    "' AND wheree = '" + planeTicket.getWhere() + "' AND month '" + planeTicket.getMonth() + "' AND day = '" + planeTicket.getDay() +
+                    "' AND wheree = '" + planeTicket.getWhere() + "' AND month = '" + planeTicket.getMonth() + "' AND day = '" + planeTicket.getDay() +
                     "' AND luggage = '" + planeTicket.getLuggage() + "'");
             ResultSet resultSet = statement.executeQuery();
 
@@ -233,7 +233,7 @@ public class DBManager {
         ArrayList<TrainTicket> trainTicketList = new ArrayList<>();
         try{
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM ticket WHERE typeID = 1 AND whereFrom = '" +
-                    trainTicket.getWhereFrom() + "' AND wheree = '" + trainTicket.getWhere() + "' AND month '" +
+                    trainTicket.getWhereFrom() + "' AND wheree = '" + trainTicket.getWhere() + "' AND month = '" +
                     trainTicket.getMonth() + "' AND day = '" + trainTicket.getDay() + "' AND type = '" + trainTicket.getType() + "'");
             ResultSet resultSet = statement.executeQuery();
 
@@ -241,7 +241,7 @@ public class DBManager {
                 Integer id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
                 String whereFrom = resultSet.getString("whereFrom");
-                String where = resultSet.getString("where");
+                String where = resultSet.getString("wheree");
                 int price = resultSet.getInt("price");
                 int day = resultSet.getInt("day");
                 String month = resultSet.getString("month");

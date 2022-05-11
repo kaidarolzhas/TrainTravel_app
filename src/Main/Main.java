@@ -3,6 +3,9 @@ import AdminMenu.AdminMenu;
 import Database.*;
 import Database.Package;
 import Class.*;
+import UserMenu.FindPlaneTicket;
+import UserMenu.FindTrainTicket;
+
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
@@ -50,7 +53,28 @@ public class Main {
                 }
                 AdminMenu.textArea.setText(s);
             }
+            else if(pd.getOperationType().equals("FIND TRAIN")){
+                outputStream.writeObject(pd);
+                Package infoFromServer = (Package)inputStream.readObject();
+                ArrayList<TrainTicket> arrayListFromServer = infoFromServer.getTrainTickets();
+                String s = "";
 
+                for(int i=0; i< arrayListFromServer.size(); i++){
+                    s += arrayListFromServer.get(i).info()+ "\n";
+                }
+                FindTrainTicket.textArea.setText(s);
+            }
+            else if(pd.getOperationType().equals("FIND PLANE")){
+                outputStream.writeObject(pd);
+                Package infoFromServer = (Package)inputStream.readObject();
+                ArrayList<PlaneTicket> arrayListFromServer = infoFromServer.getPlaneTickets();
+                String s = "";
+
+                for(int i=0; i< arrayListFromServer.size(); i++){
+                    s += arrayListFromServer.get(i).info()+ "\n";
+                }
+                FindPlaneTicket.textArea.setText(s);
+            }
 
         }catch (Exception e){
             e.printStackTrace();

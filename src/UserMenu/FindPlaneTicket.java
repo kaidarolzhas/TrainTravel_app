@@ -1,9 +1,12 @@
 package UserMenu;
+import Database.Package;
+import Main.Main;
 import Main.MainFrame;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import Class.*;
 
 public class FindPlaneTicket extends Container {
     public static JTextArea textArea;
@@ -83,7 +86,11 @@ public class FindPlaneTicket extends Container {
         findButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                PlaneTicket trainTicket = new PlaneTicket(null, whereFromField.getText(),  whereField.getText(),
+                        Integer.parseInt(dayField.getText()), (String)typeMonthBox.getSelectedItem(), (String)luggageBox.getSelectedItem());
 
+                Package pd = new Package("FIND PLANE", trainTicket );
+                Main.connect(pd);
             }
         });
 
