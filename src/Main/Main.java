@@ -19,11 +19,10 @@ public class Main {
             if(pd.getOperationType().equals("ADD CUSTOMER")){
                 outputStream.writeObject(pd);
             }
+            else if (pd.getOperationType().equals("ADD TRAIN TICKET")) {
+                outputStream.writeObject(pd);
 
-
-
-
-
+            }
 
 
         }catch (Exception e){

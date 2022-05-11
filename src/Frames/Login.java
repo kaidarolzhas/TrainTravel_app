@@ -60,15 +60,23 @@ public class Login extends Container {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
-                    DBManager result = new DBManager();
-                    result.connect();
+                    DBManager manager = new DBManager();
+                    manager.connect();
                     PreparedStatement statement = connection.prepareStatement("" +
                             "SELECT * FROM customer WHERE login = '" + loginField.getText() + "'" + "and password = '" + passwordField.getText() + "'");
                     ResultSet resultSet = statement.executeQuery();
+
                     if(resultSet.next()){
                         Main.frame.login.setVisible(false);
                         Main.frame.userMenu.setVisible(true);
                         JOptionPane.showInternalMessageDialog(null,"WELCOME");
+
+
+                    }
+
+                    else if(loginField.getText().equals("admin") && passwordField.getText().equals("password")){
+                        Main.frame.login.setVisible(false);
+                        Main.frame.adminMenu.setVisible(true);
 
 
                     }
