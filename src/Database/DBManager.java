@@ -14,7 +14,7 @@ public class DBManager {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/customer?useUnicode=true&serverTimezone=UTC", "root", "");
+                    "jdbc:mysql://localhost:3306/bd_olzhas?useUnicode=true&serverTimezone=UTC", "root", "");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -75,7 +75,7 @@ public class DBManager {
             statement.setInt(5, planeTicket.getDay());
             statement.setString(6, planeTicket.getMonth());
             statement.setInt(7, planeTicket.getPlace());
-            statement.setBoolean(8, planeTicket.getLuggage());
+            statement.setString(8, planeTicket.getLuggage());
             statement.setInt(9, 1);
 
             statement.executeUpdate();
@@ -170,5 +170,60 @@ public class DBManager {
             e.printStackTrace();
         }
         return ticketList;
+    }
+
+
+    public ArrayList<PlaneTicket> findPlaneTicket(PlaneTicket planeTicket){
+        ArrayList<PlaneTicket> planeTicketList = new ArrayList<>();
+        try{
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM ticket WHERE typeID = 1 AND whereFrom = '" + planeTicket.getWhereFrom() +
+                    "' AND wheree = '" + planeTicket.getWhere() + "' AND month '" + planeTicket.getMonth() + "' AND day = '" + planeTicket.getDay() +
+                    "' AND luggage = '" + planeTicket.getLuggage() + "'");
+            ResultSet resultSet = statement.executeQuery();
+
+            while(resultSet.next()) {
+                Integer id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                String whereFrom = resultSet.getString("whereFrom");
+                String where = resultSet.getString("where");
+                int price = resultSet.getInt("price");
+                int day = resultSet.getInt("day");
+                String month = resultSet.getString("month");
+                int place = resultSet.getInt("place");
+                String luggage = resultSet.getString("luggage");
+                planeTicketList.add(new PlaneTicket(id, name, whereFrom, where, price, day, month, place, luggage));
+            }
+            statement.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return planeTicketList;
+    }
+
+    public ArrayList<TrainTicket> findPlaneTicket(TrainTicket trainTicket){
+        ArrayList<TrainTicket> trainTicketList = new ArrayList<>();
+        try{
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM ticket WHERE typeID = 1 AND whereFrom = '" + trainTicket.getWhereFrom() +
+                    "' AND wheree = '" + trainTicket.getWhere() + "' AND month '" + trainTicket.getMonth() + "' AND day = '" + trainTicket.getDay() +
+                    "' AND type = '" + trainTicket.getType() + "'");
+            ResultSet resultSet = statement.executeQuery();
+
+            while(resultSet.next()) {
+                Integer id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                String whereFrom = resultSet.getString("whereFrom");
+                String where = resultSet.getString("where");
+                int price = resultSet.getInt("price");
+                int day = resultSet.getInt("day");
+                String month = resultSet.getString("month");
+                int place = resultSet.getInt("place");
+                String type = resultSet.getString("type");
+                trainTicketList.add(new TrainTicket(id, name, whereFrom, where, price, day, month, place, type));
+            }
+            statement.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return trainTicketList;
     }
 }

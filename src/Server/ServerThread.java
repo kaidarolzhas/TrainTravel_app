@@ -30,6 +30,13 @@ public class ServerThread extends Thread{
                     manager.addCustomer(customer);
                     break;
                 }
+                /*else if(data.getOperationType().equals("Find Type Guitar")){
+                    String findGuitar = manager.findPlaneTicket(data.g);
+                    Package toPercussion = new Package();
+                    toPercussion.setFind(findGuitar);
+                    outputStream.writeObject(toPercussion);
+                    break;
+                }*/
             }
         }catch (Exception e){
             e.printStackTrace();
