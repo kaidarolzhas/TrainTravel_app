@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class FindTrainTicket extends Container {
+    public static JTextArea textArea;
     public FindTrainTicket(){
         setSize(600, 400);
         setLayout(null);
@@ -15,47 +16,80 @@ public class FindTrainTicket extends Container {
         String[] typeMonth = {"January", "February", "March", "April", "May", "June", "July", "August", "September",
                 "October", "November", "December"};
 
+        String[] typeChoose = {"ReservedSeat", "Compartment"};
+
         JLabel whereFromLabel = new JLabel("Where from");
-        whereFromLabel.setBounds(50, 100, 95, 30);
+        whereFromLabel.setBounds(50, 50, 70, 30);
         add(whereFromLabel);
 
-        JLabel whereLabel = new JLabel("Where");
-        whereLabel.setBounds(150, 100, 95, 30);
-        add(whereLabel);
-
-        JLabel monthLabel = new JLabel("Month");
-        monthLabel.setBounds(250, 100, 95, 30);
-        add(monthLabel);
-
-        JLabel dayLabel = new JLabel("Day");
-        dayLabel.setBounds(350, 100, 95, 30);
-        add(dayLabel);
-
         JTextField whereFromField = new JTextField();
-        whereFromField.setBounds(50, 150, 95, 30);
+        whereFromField.setBounds(130, 50, 100, 30);
         add(whereFromField);
 
+        JLabel whereLabel = new JLabel("Where");
+        whereLabel.setBounds(50, 90, 70, 30);
+        add(whereLabel);
+
         JTextField whereField = new JTextField();
-        whereField.setBounds(150, 150, 95, 30);
+        whereField.setBounds(130, 90, 100, 30);
         add(whereField);
 
-        JComboBox typeMonthField = new JComboBox(typeMonth);
-        typeMonthField.setBounds(250, 150, 95, 30);
-        add(typeMonthField);
+        JLabel monthLabel = new JLabel("Month");
+        monthLabel.setBounds(50, 130, 70, 30);
+        add(monthLabel);
+
+        JComboBox typeMonthBox = new JComboBox(typeMonth);
+        typeMonthBox.setBounds(130, 130, 100, 30);
+        add(typeMonthBox);
+
+        JLabel dayLabel = new JLabel("Day");
+        dayLabel.setBounds(50, 170, 70, 30);
+        add(dayLabel);
 
         JTextField dayField = new JTextField();
-        dayField.setBounds(350, 150, 95, 30);
+        dayField.setBounds(130, 170, 100, 30);
         add(dayField);
 
+        JLabel chooseLabel = new JLabel("Choose");
+        chooseLabel.setBounds(50, 210, 70, 30);
+        add(chooseLabel);
+
+        JComboBox chooseBox = new JComboBox(typeChoose);
+        chooseBox.setBounds(130, 210, 100, 30);
+        add(chooseBox);
+
         JButton findButton = new JButton("Find");
-        findButton.setBounds(450, 150, 95, 30);
+        findButton.setBounds(50, 250, 180, 30);
         add(findButton);
 
         JButton backButton = new JButton("Back to menu");
-        backButton.setBounds(50, 200, 150, 30);
+        backButton.setBounds(50, 290, 180, 30);
         add(backButton);
 
+        textArea = new JTextArea();
+        textArea.setBounds(250, 50, 300, 190);
+        add(textArea);
+
+        JLabel label = new JLabel("Enter the ticket number you want to buy");
+        label.setBounds(250, 250, 230, 30);
+        add(label);
+
+        JTextField numberField = new JTextField();
+        numberField.setBounds(485, 250, 65, 30);
+        add(numberField);
+
+        JButton buyButton = new JButton("BUY");
+        buyButton.setBounds(250, 290, 300, 30);
+        add(buyButton);
+
         findButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
+        buyButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
