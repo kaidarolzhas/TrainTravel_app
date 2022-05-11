@@ -65,7 +65,7 @@ public class FindTrainTicket extends Container {
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MainFrame.findPlaneTicket.setVisible(false);
+                MainFrame.findTrainTicket.setVisible(false);
                 MainFrame.userMenu.setVisible(true);
             }
         });
