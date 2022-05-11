@@ -7,6 +7,7 @@ public class Package implements Serializable {
     private String operationType;
     private Customer customer;
     private TrainTicket trainTicket;
+    private PlaneTicket planeTicket;
 
     private ArrayList<PlaneTicket> planeTickets;
     private ArrayList<TrainTicket> trainTickets;
@@ -15,9 +16,16 @@ public class Package implements Serializable {
     public Package() {
     }
 
+
+    public Package(String operationType, PlaneTicket planeTicket) {
+        this.operationType = operationType;
+        this.planeTicket = planeTicket;
+    }
+
     public Package(String operationType) {
         this.operationType = operationType;
     }
+
 
 
     public Package(String operationType, TrainTicket trainTicket) {
@@ -82,5 +90,13 @@ public class Package implements Serializable {
 
     public void setPlaneTickets(ArrayList<PlaneTicket> planeTickets) {
         this.planeTickets = planeTickets;
+    }
+
+    public PlaneTicket getPlaneTicket() {
+        return planeTicket;
+    }
+
+    public void setPlaneTicket(PlaneTicket planeTicket) {
+        this.planeTicket = planeTicket;
     }
 }

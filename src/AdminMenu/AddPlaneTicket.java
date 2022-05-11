@@ -72,11 +72,11 @@ public class AddPlaneTicket extends Container {
         add(LuggageField);
 
         JLabel placeLabel = new JLabel("Place:");
-        placeLabel.setBounds(50, 200, 95, 30);
+        placeLabel.setBounds(50, 300, 95, 30);
         add(placeLabel);
 
         JTextField placeField = new JTextField();
-        placeField.setBounds(200, 300, 95, 30);
+        placeField.setBounds(150, 300, 95, 30);
         add(placeField);
 
         JLabel NameLabel = new JLabel("Name:");
@@ -87,8 +87,6 @@ public class AddPlaneTicket extends Container {
         NameField.setBounds(150, 250, 95, 30);
         add(NameField);
 
-
-        String name = "Kazakhstan";
 
 
         JButton findButton = new JButton("Add");
@@ -102,17 +100,17 @@ public class AddPlaneTicket extends Container {
         findButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                /*
 
-                PlaneTicket trainTicket = new PlaneTicket(
-                        null,name, whereFromField.getText(),
-                        whereField.getText(), Integer.parseInt(priceField.getText()),Integer.parseInt(dayField.getText()),(String)typeMonthField.getSelectedItem(),Integer.parseInt(placeField.getText())
+                PlaneTicket planeTicket = new PlaneTicket(
+
+
+
                 );
-                /*
-                Package pd = new Package("ADD TRAIN TICKET", PlaneTicket);
+
+                Package pd = new Package("ADD TRAIN TICKET", planeTicket);
                 Main.connect(pd);
 
-                 */
+
 
 
 
