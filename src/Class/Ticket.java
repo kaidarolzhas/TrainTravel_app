@@ -4,22 +4,26 @@ import java.io.Serializable;
 
 public class Ticket implements Serializable {
     private Integer id;
+    private String name;
     private String whereFrom;
     private String where;
     private int price;
     private int day;
     private String month;
+    private int place;
 
     public Ticket() {
     }
 
-    public Ticket(Integer id, String whereFrom, String where, int price, int day, String month) {
+    public Ticket(Integer id, String name, String whereFrom, String where, int price, int day, String month, int place) {
         this.id = id;
+        this.name = name;
         this.whereFrom = whereFrom;
         this.where = where;
         this.price = price;
         this.day = day;
         this.month = month;
+        this.place = place;
     }
 
     public Integer getId() {
@@ -70,8 +74,31 @@ public class Ticket implements Serializable {
         this.month = month;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getPlace() {
+        return place;
+    }
+
+    public void setPlace(int place) {
+        this.place = place;
+    }
+
     @Override
     public String toString() {
-        return id + ", whereFrom='" + whereFrom + ", where='" + where + ", price=" + price + ", day='" + day + ", month='" + month;
+        return "id=" + id +
+                ", name='" + name + '\'' +
+                ", whereFrom='" + whereFrom + '\'' +
+                ", where='" + where + '\'' +
+                ", price=" + price +
+                ", day=" + day +
+                ", month='" + month + '\'' +
+                ", place=" + place;
     }
 }
