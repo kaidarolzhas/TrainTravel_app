@@ -38,10 +38,17 @@ public class ServerThread extends Thread{
                     
                 }
                 else if(data.getOperationType().equals("Find Plane")){
-                    //ArrayList<PlaneTicket> arrayPercussion = manager.findPlaneTicket(data.getPlaneTickets());
-                    Package toPercussion = new Package();
-                    //toPercussion.setPercussionInstruments(arrayPercussion);
-                    outputStream.writeObject(toPercussion);
+                    ArrayList<PlaneTicket> arrayPlane = manager.findPlaneTicket(data.getPlaneTicket());
+                    Package toPlane = new Package();
+                    toPlane.setPlaneTickets(arrayPlane);
+                    outputStream.writeObject(toPlane);
+                    break;
+                }
+                else if(data.getOperationType().equals("Find Train")){
+                    ArrayList<TrainTicket> arrayTrain = manager.findTrainTicket(data.getTrainTicket());
+                    Package toTrain = new Package();
+                    toTrain.setTrainTickets(arrayTrain);
+                    outputStream.writeObject(toTrain);
                     break;
                 }
                 else if (data.getOperationType().equals("ADD PLANE TICKET")) {

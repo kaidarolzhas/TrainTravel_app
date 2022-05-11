@@ -1,7 +1,9 @@
 package UserMenu;
 
+import Database.Package;
+import Main.Main;
 import Main.MainFrame;
-
+import Class.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -16,7 +18,7 @@ public class FindTrainTicket extends Container {
         String[] typeMonth = {"January", "February", "March", "April", "May", "June", "July", "August", "September",
                 "October", "November", "December"};
 
-        String[] typeChoose = {"ReservedSeat", "Compartment"};
+        String[] typeChoose = {"Talgo", "Kupe"};
 
         JLabel whereFromLabel = new JLabel("Where from");
         whereFromLabel.setBounds(50, 50, 70, 30);
@@ -81,11 +83,17 @@ public class FindTrainTicket extends Container {
         JButton buyButton = new JButton("BUY");
         buyButton.setBounds(250, 290, 300, 30);
         add(buyButton);
+        //(String)typeField.getSelectedItem(), nameField.getText(),
+        //                            Integer.parseInt(costField.getText())
 
         findButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                TrainTicket trainTicket = new TrainTicket(null, whereFromField.getText(),  whereField.getText(),
+                        Integer.parseInt(dayField.getText()), (String)typeMonthBox.getSelectedItem(), (String)chooseBox.getSelectedItem());
 
+                Package pd = new Package("Find Train", trainTicket );
+                Main.connect(pd);
             }
         });
 
