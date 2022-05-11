@@ -2,6 +2,8 @@ package Main;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class MainMenu extends Container {
     public MainMenu(){
@@ -37,6 +39,25 @@ public class MainMenu extends Container {
         exitButton.setFont(new Font("Verdana", Font.BOLD , 12));
         exitButton.setBounds(375, 150, 145, 45);
         add(exitButton);
+
+
+        logInButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.frame.login.setVisible(true);
+                Main.frame.mainMenu.setVisible(false);
+            }
+        });
+
+        singButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.frame.signup.setVisible(true);
+                Main.frame.mainMenu.setVisible(false);
+            }
+        });
+
+
 
 
 

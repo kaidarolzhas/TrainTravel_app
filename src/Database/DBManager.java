@@ -20,6 +20,28 @@ public class DBManager {
         }
     }
 
+    public boolean checkCustomer(String customerLogin, String customer_password) {
+        boolean check = false;
+        try {
+            PreparedStatement statement = connection.prepareStatement("" +
+                    "SELECT * FROM customer WHERE login = '" + customerLogin + "'" + "and password = '" + customer_password + "'");
+            ResultSet resultSet = statement.executeQuery();
+            if(resultSet.next()){
+                check = true;
+            }
+
+
+            statement.executeUpdate();
+            statement.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return check;
+    }
+
+
+
     public void addCustomer(Customer customer) {
         try {
             PreparedStatement statement = connection.prepareStatement("" +
