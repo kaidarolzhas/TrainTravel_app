@@ -59,6 +59,24 @@ public class DBManager {
         }
     }
 
+    public void addTicket(Ticket ticket) {
+        try {
+            PreparedStatement statement = connection.prepareStatement("" +
+                    "INSERT INTO ticket (id, whereFrom, where, price, day, month) " +
+                    "VALUES (NULL, ?, ?, ?, ?, ?)");
+            statement.setString(1, ticket.getWhereFrom());
+            statement.setString(2, ticket.getWhere());
+            statement.setInt(3, ticket.getPrice());
+            statement.setInt(4, ticket.getDay());
+            statement.setString(5, ticket.getMonth());
+
+            statement.executeUpdate();
+            statement.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
     public ArrayList<Customer> getAllCustomer(){
         ArrayList<Customer> customerList = new ArrayList<>();
         try{
@@ -78,5 +96,27 @@ public class DBManager {
             e.printStackTrace();
         }
         return customerList;
+    }
+
+    public ArrayList<Ticket> getAllTicket(){
+        ArrayList<Ticket> ticketList = new ArrayList<>();
+        try{
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM ticket");
+            ResultSet resultSet = statement.executeQuery();
+
+            while(resultSet.next()){
+                Integer id = resultSet.getInt("id");
+                String whereFrom = resultSet.getString("whereFrom");
+                String where = resultSet.getString("where");
+                int price = resultSet.getInt("price");
+                int day = resultSet.getInt("day");
+                String month = resultSet.getString("month");
+                ticketList.add(new Ticket(id, whereFrom, where, price, day, month));
+            }
+            statement.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return ticketList;
     }
 }
