@@ -1,6 +1,8 @@
 package Frames;
 
 import javax.swing.*;
+
+import Database.DBManager;
 import Database.Package;
 import Main.Main;
 
@@ -58,12 +60,15 @@ public class Login extends Container {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
+                    DBManager result = new DBManager();
+                    result.connect();
                     PreparedStatement statement = connection.prepareStatement("" +
                             "SELECT * FROM customer WHERE login = '" + loginField.getText() + "'" + "and password = '" + passwordField.getText() + "'");
                     ResultSet resultSet = statement.executeQuery();
                     if(resultSet.next()){
                         Main.frame.login.setVisible(false);
                         Main.frame.userMenu.setVisible(true);
+                        JOptionPane.showInternalMessageDialog(null,"WELCOME");
 
 
                     }

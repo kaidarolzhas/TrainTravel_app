@@ -78,7 +78,7 @@ public class Signup extends Container {
         singButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Customer new_customer = new Customer(null, loginField.getText(), passwordField.getText(), nameField.getText(), surnameField.getText());
+                Customer new_customer = new Customer(null, nameField.getText(),  surnameField.getText(), loginField.getText(), passwordField.getText());
                 Package packageData = new Package("ADD CUSTOMER", new_customer);
                 Main.connect(packageData);
                 JOptionPane.showInternalMessageDialog(null,"SUCCESSFUL");
