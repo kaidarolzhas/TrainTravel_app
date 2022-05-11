@@ -11,28 +11,40 @@ public class UserMenu extends Container {
         setSize(600, 400);
         setLayout(null);
 
-        JButton buyTicketButton = new JButton("Buy ticket");
-        buyTicketButton.setBounds(100, 50, 400, 30);
-        add(buyTicketButton);
+        JButton findTrainButton = new JButton("Find train ticket");
+        findTrainButton.setBounds(100, 50, 400, 25);
+        add(findTrainButton);
+
+        JButton findPlaneButton = new JButton("Find plane ticket");
+        findPlaneButton.setBounds(100, 80, 400, 25);
+        add(findPlaneButton);
 
         JButton myTicketsButton = new JButton("My tickets");
-        myTicketsButton.setBounds(100, 90, 400, 30);
+        myTicketsButton.setBounds(100, 110, 400, 25);
         add(myTicketsButton);
 
         textArea = new JTextArea();
-        textArea.setBounds(100, 130, 400, 130);
+        textArea.setBounds(100, 140, 400, 130);
         add(textArea);
         textArea.setText(null);
 
         JButton backButton = new JButton("Back to menu");
-        backButton.setBounds(100, 270, 400, 30);
+        backButton.setBounds(100, 275, 400, 25);
         add(backButton);
 
-        buyTicketButton.addActionListener(new ActionListener() {
+        findTrainButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 MainFrame.userMenu.setVisible(false);
-                MainFrame.buyTicket.setVisible(true);
+                MainFrame.findTrainTicket.setVisible(true);
+            }
+        });
+
+        findPlaneButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MainFrame.userMenu.setVisible(false);
+                MainFrame.findPlaneTicket.setVisible(true);
             }
         });
 

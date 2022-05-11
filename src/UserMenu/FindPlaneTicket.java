@@ -5,8 +5,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class BuyTicket extends Container {
-    public BuyTicket(){
+public class FindPlaneTicket extends Container {
+    public FindPlaneTicket(){
         setSize(600, 400);
         setLayout(null);
 
@@ -63,7 +63,7 @@ public class BuyTicket extends Container {
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MainFrame.buyTicket.setVisible(false);
+                MainFrame.findPlaneTicket.setVisible(false);
                 MainFrame.userMenu.setVisible(true);
             }
         });
