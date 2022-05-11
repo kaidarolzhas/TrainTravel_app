@@ -102,12 +102,15 @@ public class AddPlaneTicket extends Container {
             public void actionPerformed(ActionEvent e) {
 
                 PlaneTicket planeTicket = new PlaneTicket(
+                        null, (String)NameField.getSelectedItem(), whereFromField.getText(), whereField.getText(),
+                        Integer.parseInt(priceField.getText()), Integer.parseInt(dayField.getText()),(String)typeMonthField.getSelectedItem(),
+                        Integer.parseInt(placeField.getText()), (String) LuggageField.getSelectedItem()
 
 
 
-                );
+                        );
 
-                Package pd = new Package("ADD TRAIN TICKET", planeTicket);
+                Package pd = new Package("ADD PLANE TICKET", planeTicket);
                 Main.connect(pd);
 
 

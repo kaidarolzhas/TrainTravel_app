@@ -76,7 +76,7 @@ public class DBManager {
             statement.setString(6, planeTicket.getMonth());
             statement.setInt(7, planeTicket.getPlace());
             statement.setString(8, planeTicket.getLuggage());
-            statement.setInt(9, 1);
+            statement.setInt(9, 2);
 
             statement.executeUpdate();
             statement.close();
@@ -131,17 +131,20 @@ public class DBManager {
     public ArrayList<PlaneTicket> getAllPlaneTicket(){
         ArrayList<PlaneTicket> ticketList = new ArrayList<>();
         try{
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM ticket");
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM ticket WHERE typeID=2");
             ResultSet resultSet = statement.executeQuery();
 
             while(resultSet.next()){
                 Integer id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
                 String whereFrom = resultSet.getString("whereFrom");
-                String where = resultSet.getString("where");
+                String where = resultSet.getString("wheree");
                 int price = resultSet.getInt("price");
                 int day = resultSet.getInt("day");
                 String month = resultSet.getString("month");
-                //ticketList.add(new Ticket(id, whereFrom, where, price, day, month));
+                int place = resultSet.getInt("place");
+                String lugguage = resultSet.getString("luggage");
+                ticketList.add(new PlaneTicket(id, name,whereFrom, where, price, day, month,place,lugguage));
             }
             statement.close();
         }catch (Exception e){
@@ -149,6 +152,32 @@ public class DBManager {
         }
         return ticketList;
     }
+
+    public ArrayList<TrainTicket> getAllTrainTicket(){
+        ArrayList<TrainTicket> ticketList = new ArrayList<>();
+        try{
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM ticket WHERE typeID = 1");
+            ResultSet resultSet = statement.executeQuery();
+
+            while(resultSet.next()){
+                Integer id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                String whereFrom = resultSet.getString("whereFrom");
+                String where = resultSet.getString("wheree");
+                int price = resultSet.getInt("price");
+                int day = resultSet.getInt("day");
+                String month = resultSet.getString("month");
+                int place = resultSet.getInt("place");
+                String type = resultSet.getString("type");
+                ticketList.add(new TrainTicket(id, name,whereFrom, where, price, day, month,place,type));
+            }
+            statement.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return ticketList;
+    }
+
 
     public ArrayList<Ticket> getAllTicket(){
         ArrayList<Ticket> ticketList = new ArrayList<>();

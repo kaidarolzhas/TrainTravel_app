@@ -24,7 +24,6 @@ public class ServerThread extends Thread{
 
             ObjectOutputStream outputStream = new ObjectOutputStream(socket.getOutputStream());
             ObjectInputStream inputStream = new ObjectInputStream(socket.getInputStream());
-
             Package data = null;
 
             while((data = ((Package)inputStream.readObject())) != null) {
@@ -45,6 +44,29 @@ public class ServerThread extends Thread{
                     outputStream.writeObject(toPercussion);
                     break;
                 }
+                else if (data.getOperationType().equals("ADD PLANE TICKET")) {
+                    PlaneTicket planeTicket = data.getPlaneTicket();
+                    manager.addPlaneTicket(planeTicket);
+                    break;
+
+                }
+                else if(data.getOperationType().equals("LIST TRAIN")){
+                    ArrayList<TrainTicket> arrayTrain = manager.getAllTrainTicket();
+                    Package trainList = new Package();
+                    trainList.setTrainTickets(arrayTrain);
+                    outputStream.writeObject(trainList);
+                    break;
+                }
+
+                else if(data.getOperationType().equals("LIST PLANE")){
+                    ArrayList<PlaneTicket> arrayPlane = manager.getAllPlaneTicket();
+                    Package planeList = new Package();
+                    planeList.setPlaneTickets(arrayPlane);
+                    outputStream.writeObject(planeList);
+                    break;
+                }
+
+
             }
         }catch (Exception e){
             e.printStackTrace();

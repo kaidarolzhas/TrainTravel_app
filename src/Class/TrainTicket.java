@@ -10,6 +10,14 @@ public class TrainTicket extends Ticket implements Serializable {
         this.type = type;
     }
 
+
+    @Override
+    public String toString() {
+        return "TrainTicket{" +
+                "type='" + type + '\'' +
+                '}';
+    }
+
     public String getType() {
         return type;
     }

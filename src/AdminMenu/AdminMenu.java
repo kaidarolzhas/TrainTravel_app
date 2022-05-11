@@ -1,5 +1,6 @@
 package AdminMenu;
-
+import Main.Main;
+import Database.Package;
 import Main.MainFrame;
 
 import javax.swing.*;
@@ -8,24 +9,59 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class AdminMenu extends Container {
+    public static JTextArea textArea;
     public AdminMenu(){
 
         setSize(600, 400);
         setLayout(null);
 
 
-        JButton TrainButton = new JButton("Find train ticket");
-        TrainButton.setBounds(100, 50, 400, 25);
+        JButton TrainButton = new JButton("Add train ticket");
+        TrainButton.setBounds(75, 20, 400, 25);
         add(TrainButton);
 
-        JButton PlaneButton = new JButton("Find plane ticket");
-        PlaneButton.setBounds(100, 80, 400, 25);
+        JButton PlaneButton = new JButton("Add plane ticket");
+        PlaneButton.setBounds(75, 50, 400, 25);
         add(PlaneButton);
 
         JButton back = new JButton("Back");
-        back.setBounds(100, 110, 400, 25);
+        back.setBounds(75, 80, 400, 25);
         add(back);
 
+        textArea = new JTextArea();
+        textArea.setEditable(false);
+        textArea.setBounds(75,120,400,200);
+        add(textArea);
+
+        JButton trainList = new JButton("List Train");
+        trainList.setBounds(75, 325, 100, 25);
+        add(trainList);
+
+        JButton planeList = new JButton("List Plane");
+        planeList.setBounds(375, 325, 100, 25);
+        add(planeList);
+
+
+
+        planeList.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Package pd = new Package("LIST PLANE");
+                Main.connect(pd);
+
+            }
+        });
+
+        trainList.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                textArea.setText(null);
+                Package pd = new Package("LIST TRAIN");
+                Main.connect(pd);
+
+
+            }
+        });
 
         TrainButton.addActionListener(new ActionListener() {
             @Override
@@ -44,6 +80,8 @@ public class AdminMenu extends Container {
 
             }
         });
+
+
 
         back.addActionListener(new ActionListener() {
             @Override

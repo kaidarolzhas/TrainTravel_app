@@ -90,15 +90,15 @@ public class Ticket implements Serializable {
         this.place = place;
     }
 
-    @Override
-    public String toString() {
-        return "id=" + id +
-                ", name='" + name + '\'' +
-                ", whereFrom='" + whereFrom + '\'' +
-                ", where='" + where + '\'' +
-                ", price=" + price +
-                ", day=" + day +
-                ", month='" + month + '\'' +
-                ", place=" + place;
+
+    public String info() {
+        return   id + " " +
+                 name + ' ' +
+                 whereFrom + ' ' +
+                 where + ' ' +
+                 price +  " " +
+                 day + " " +
+                 month + ' ' +
+                 place + '\n';
     }
 }
