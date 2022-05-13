@@ -15,7 +15,7 @@ public class DBManager {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/customer?useUnicode=true&serverTimezone=UTC", "root", "");
+                    "jdbc:mysql://localhost:3306/bd_olzhas?useUnicode=true&serverTimezone=UTC", "root", "");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -88,10 +88,10 @@ public class DBManager {
 
 
 
-    public void addCard(Integer ticket_id, Integer customer_id) {
+    public void addCard(Integer customer_id, Integer ticket_id) {
         try {
             PreparedStatement statement = connection.prepareStatement("" +
-                    "INSERT INTO card (id, customer_id, ticket_id) " +
+                    "INSERT INTO cart (id, customer_id, ticket_id) " +
                     "VALUES (NULL, ?, ?)");
             statement.setInt(1, customer_id);
             statement.setInt(2, ticket_id);

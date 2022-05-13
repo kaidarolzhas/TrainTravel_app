@@ -1,6 +1,7 @@
 package UserMenu;
 
 import Database.Package;
+import Frames.Login;
 import Main.Main;
 import Main.MainFrame;
 import Class.*;
@@ -98,8 +99,10 @@ public class FindTrainTicket extends Container {
         buyButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Package pd = new Package("DELETE TICKET", Integer.parseInt(numberField.getText()));
-                Main.connect(pd);
+                Package pd2 = new Package("ADD CARD", Login.customer.getId(),Integer.parseInt(numberField.getText()));
+                Main.connect(pd2);
+                //Package pd = new Package("DELETE TICKET", Integer.parseInt(numberField.getText()));
+                //Main.connect(pd);
             }
         });
 

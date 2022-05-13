@@ -44,7 +44,7 @@ public class ServerThread extends Thread{
 
                 }
                 else if (data.getOperationType().equals("ADD CARD")) {
-                   manager.addCard(data.getCustomer_id(), data.getTicket_id());
+                    manager.addCard(data.getCustomer_id(), data.getTicket_id());
                     break;
 
                 }
