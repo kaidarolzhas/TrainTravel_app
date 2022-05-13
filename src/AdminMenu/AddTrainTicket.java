@@ -3,6 +3,7 @@ import Class.TrainTicket;
 import Database.Package;
 import Main.Main;
 import Main.MainFrame;
+import com.mysql.cj.protocol.x.XMessage;
 
 import javax.swing.*;
 import java.awt.*;
@@ -72,7 +73,7 @@ public class AddTrainTicket extends Container {
         add(placeLabel);
 
         JTextField placeField = new JTextField();
-        placeField.setBounds(450, 300, 95, 30);
+        placeField.setBounds(150, 300, 95, 30);
         add(placeField);
 
         String name = "Kazakhstan";
@@ -94,8 +95,10 @@ public class AddTrainTicket extends Container {
                         whereField.getText(), Integer.parseInt(priceField.getText()),Integer.parseInt(dayField.getText()),
                         (String)typeMonthField.getSelectedItem(),Integer.parseInt(placeField.getText()),(String)typeTrainField.getSelectedItem()
                 );
+
                 Package pd = new Package("ADD TRAIN TICKET", trainTicket);
                 Main.connect(pd);
+                JOptionPane.showInternalMessageDialog(null,"Ticket added");
 
                 whereFromField.setText(null);
                 whereField.setText(null);

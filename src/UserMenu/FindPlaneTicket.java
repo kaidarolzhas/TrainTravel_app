@@ -105,8 +105,8 @@ public class FindPlaneTicket extends Container {
                 Package pd2 = new Package("ADD CARD", Login.customer.getId(), ticket.getName(), ticket.getWhereFrom(), ticket.getWhere(), ticket.getDay(), ticket.getMonth(), ticket.getPlace());
                 Main.connect(pd2);
 
-                //Package pd = new Package("DELETE TICKET", Integer.parseInt(numberField.getText()));
-                //Main.connect(pd);
+                Package pd = new Package("DELETE TICKET", Integer.parseInt(numberField.getText()));
+                Main.connect(pd);
             }
         });
 

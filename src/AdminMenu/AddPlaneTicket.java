@@ -100,8 +100,10 @@ public class AddPlaneTicket extends Container {
                         Integer.parseInt(placeField.getText()), (String) LuggageField.getSelectedItem()
                 );
 
+
                 Package pd = new Package("ADD PLANE TICKET", planeTicket);
                 Main.connect(pd);
+                JOptionPane.showInternalMessageDialog(null,"Ticket added");
 
                 whereFromField.setText(null);
                 whereField.setText(null);
