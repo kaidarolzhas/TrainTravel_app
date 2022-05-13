@@ -1,5 +1,10 @@
 package UserMenu;
+import Main.*;
+import Database.Package;
+import Frames.Login;
 import Main.MainFrame;
+import com.mysql.cj.log.Log;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -51,6 +56,8 @@ public class UserMenu extends Container {
         myTicketsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Package pd = new Package("LIST CARD", Login.customer.getId());
+                Main.connect(pd);
 
             }
         });

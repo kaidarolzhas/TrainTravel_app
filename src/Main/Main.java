@@ -6,6 +6,7 @@ import Class.*;
 import Frames.Login;
 import UserMenu.FindPlaneTicket;
 import UserMenu.FindTrainTicket;
+import UserMenu.UserMenu;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -94,6 +95,17 @@ public class Main {
 
                 FindPlaneTicket.ticket = customer;
                 FindTrainTicket.ticket = customer;
+            }
+            else if(pd.getOperationType().equals("LIST CARD")){
+                outputStream.writeObject(pd);
+                Package infoFromServer = (Package)inputStream.readObject();
+                ArrayList<Ticket> arrayListFromServer = infoFromServer.getTickets();
+                String s = "";
+
+                for(int i=0; i< arrayListFromServer.size(); i++){
+                    s += arrayListFromServer.get(i).info()+ "\n";
+                }
+                UserMenu.textArea.setText(s);
             }
 
         }catch (Exception e){

@@ -19,6 +19,7 @@ public class Package implements Serializable {
     private int place;
     private Ticket ticket;
 
+    private ArrayList<Ticket> tickets;
     private ArrayList<PlaneTicket> planeTickets;
     private ArrayList<TrainTicket> trainTickets;
     private ArrayList<Customer> customers;
@@ -26,6 +27,7 @@ public class Package implements Serializable {
     //public void addCard(Integer customer_id, String name, String whereFrom, String wheree, int day, String month, int place) {
     public Package() {
     }
+
 
     public Package(Ticket ticket) {
         this.ticket = ticket;
@@ -233,5 +235,13 @@ public class Package implements Serializable {
 
     public void setTicket(Ticket ticket) {
         this.ticket = ticket;
+    }
+
+    public ArrayList<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(ArrayList<Ticket> tickets) {
+        this.tickets = tickets;
     }
 }

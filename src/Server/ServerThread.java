@@ -9,6 +9,7 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
 import Class.*;
+import Frames.Login;
 
 
 public class ServerThread extends Thread{
@@ -61,6 +62,13 @@ public class ServerThread extends Thread{
                     ArrayList<PlaneTicket> arrayPlane = manager.getAllPlaneTicket();
                     Package planeList = new Package();
                     planeList.setPlaneTickets(arrayPlane);
+                    outputStream.writeObject(planeList);
+                    break;
+                }
+                else if(data.getOperationType().equals("LIST CARD")){
+                    ArrayList<Ticket> arrayPlane = manager.getCard(data.getId());
+                    Package planeList = new Package();
+                    planeList.setTickets(arrayPlane);
                     outputStream.writeObject(planeList);
                     break;
                 }

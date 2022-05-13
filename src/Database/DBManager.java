@@ -15,7 +15,7 @@ public class DBManager {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bd_olzhas?useUnicode=true&serverTimezone=UTC", "root", "");
+                    "jdbc:mysql://localhost:3306/customer?useUnicode=true&serverTimezone=UTC", "root", "");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -91,7 +91,7 @@ public class DBManager {
     public void addCard(Integer customer_id, String name, String whereFrom, String wheree, int day, String month, int place) {
         try {
             PreparedStatement statement = connection.prepareStatement("" +
-                    "INSERT INTO cart (id, customer_id, name, whereFrom, wheree, day, month, place) " +
+                    "INSERT INTO card (id, customer_id, name, whereFrom, wheree, day, month, place) " +
                     "VALUES (NULL, ?, ?, ?, ?, ?, ?, ?)");
             statement.setInt(1, customer_id);
             statement.setString(2, name);
@@ -107,6 +107,7 @@ public class DBManager {
             e.printStackTrace();
         }
     }
+
 
     public void addTrainTicket(TrainTicket trainTicket) {
         try {
@@ -150,6 +151,31 @@ public class DBManager {
         }
         return customerList;
     }
+    public ArrayList<Ticket> getCard(int customer_id){
+        ArrayList<Ticket> ticketList = new ArrayList<>();
+        try {
+            PreparedStatement statement = connection.prepareStatement("" +
+                    "SELECT * FROM card WHERE customer_id = '" + customer_id + "'");
+
+            ResultSet resultSet = statement.executeQuery();
+
+            while(resultSet.next()){
+                Integer id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                String whereFrom = resultSet.getString("whereFrom");
+                String where = resultSet.getString("wheree");
+                int day = resultSet.getInt("day");
+                String month = resultSet.getString("month");
+                int place = resultSet.getInt("place");
+                ticketList.add(new Ticket(id, name, whereFrom, where, day, month, place));
+            }
+            statement.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return ticketList;
+    }
+
 
     public ArrayList<PlaneTicket> getAllPlaneTicket(){
         ArrayList<PlaneTicket> ticketList = new ArrayList<>();
