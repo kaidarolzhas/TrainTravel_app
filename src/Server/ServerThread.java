@@ -77,6 +77,12 @@ public class ServerThread extends Thread{
                     manager.deleteTicket(idTicket);
                     break;
                 }
+                else if(data.getOperationType().equals("GET CUSTOMER")){
+                    Customer customer = manager.getCustomer(data.getLogin());
+                    Package toPercussion = new Package(customer);
+                    outputStream.writeObject(toPercussion);
+                    break;
+                }
             }
         }catch (Exception e){
             e.printStackTrace();

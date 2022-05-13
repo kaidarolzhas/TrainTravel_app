@@ -9,12 +9,22 @@ public class Package implements Serializable {
     private TrainTicket trainTicket;
     private PlaneTicket planeTicket;
     private int id;
+    private String login;
 
     private ArrayList<PlaneTicket> planeTickets;
     private ArrayList<TrainTicket> trainTickets;
     private ArrayList<Customer> customers;
 
     public Package() {
+    }
+
+    public Package(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Package(String operationType, String login) {
+        this.operationType = operationType;
+        this.login = login;
     }
 
     public Package(String operationType, int id) {
@@ -111,5 +121,13 @@ public class Package implements Serializable {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
     }
 }

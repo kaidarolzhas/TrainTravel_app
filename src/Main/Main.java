@@ -3,6 +3,7 @@ import AdminMenu.AdminMenu;
 import Database.*;
 import Database.Package;
 import Class.*;
+import Frames.Login;
 import UserMenu.FindPlaneTicket;
 import UserMenu.FindTrainTicket;
 
@@ -20,7 +21,7 @@ public class Main {
             ObjectOutputStream outputStream = new ObjectOutputStream(socket.getOutputStream());
             ObjectInputStream inputStream = new ObjectInputStream(socket.getInputStream());
 
-            if(pd.getOperationType().equals("ADD CUSTOMER")){
+            if(pd.getOperationType().equals("ADD CUSTOMER") || pd.getOperationType().equals("DELETE TICKET")){
                 outputStream.writeObject(pd);
             }
             else if (pd.getOperationType().equals("ADD TRAIN TICKET")) {
@@ -74,6 +75,13 @@ public class Main {
                     s += arrayListFromServer.get(i).info()+ "\n";
                 }
                 FindPlaneTicket.textArea.setText(s);
+            }
+            else if(pd.getOperationType().equals("GET CUSTOMER")){
+                outputStream.writeObject(pd);
+                Package infoFromServer = (Package)inputStream.readObject();
+                Customer customer = infoFromServer.getCustomer();
+
+                Login.customer = customer;
             }
 
         }catch (Exception e){

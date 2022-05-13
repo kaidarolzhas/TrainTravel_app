@@ -287,4 +287,25 @@ public class DBManager {
             e.printStackTrace();
         }
     }
+
+    public Customer getCustomer(String loginn){
+        Customer customer = new Customer();
+        try{
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM customer WHERE login = '" + loginn + "'");
+            ResultSet resultSet = statement.executeQuery();
+
+            while(resultSet.next()){
+                Integer id = resultSet.getInt("id");
+                String login = resultSet.getString("login");
+                String password = resultSet.getString("password");
+                String name = resultSet.getString("name");
+                String surname = resultSet.getString("surname");
+                customer = new Customer(id, login, password, name, surname);
+            }
+            statement.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return customer;
+    }
 }
