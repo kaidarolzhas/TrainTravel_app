@@ -23,8 +23,6 @@ public class Package implements Serializable {
     private ArrayList<PlaneTicket> planeTickets;
     private ArrayList<TrainTicket> trainTickets;
     private ArrayList<Customer> customers;
-
-    //public void addCard(Integer customer_id, String name, String whereFrom, String wheree, int day, String month, int place) {
     public Package() {
     }
 

@@ -20,7 +20,7 @@ public class FindTrainTicket extends Container {
         String[] typeMonth = {"January", "February", "March", "April", "May", "June", "July", "August", "September",
                 "October", "November", "December"};
 
-        String[] typeChoose = {"Talgo", "Kupe"};
+        String[] typeChoose = {"Compartment", "ReservedSeat"};
 
         JLabel whereFromLabel = new JLabel("Where from");
         whereFromLabel.setBounds(50, 50, 70, 30);
@@ -100,13 +100,21 @@ public class FindTrainTicket extends Container {
         buyButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Package pd3 = new Package("GET TICKET", Integer.parseInt(numberField.getText()) );
-                Main.connect(pd3);
+                if(!numberField.getText().equals( "" )) {
+                    Package pd3 = new Package("GET TICKET", Integer.parseInt(numberField.getText()));
+                    Main.connect(pd3);
 
-                Package pd2 = new Package("ADD CARD", Login.customer.getId(), ticket.getName(), ticket.getWhereFrom(), ticket.getWhere(), ticket.getDay(), ticket.getMonth(), ticket.getPlace());
-                Main.connect(pd2);
-                //Package pd = new Package("DELETE TICKET", Integer.parseInt(numberField.getText()));
-                //Main.connect(pd);
+                    Package pd2 = new Package("ADD CARD", Login.customer.getId(), ticket.getName(), ticket.getWhereFrom(), ticket.getWhere(), ticket.getDay(), ticket.getMonth(), ticket.getPlace());
+                    Main.connect(pd2);
+                    Package pd = new Package("DELETE TICKET", Integer.parseInt(numberField.getText()));
+                    Main.connect(pd);
+
+                    textArea.setText(null);
+                    numberField.setText(null);
+                }
+                else{
+                    JOptionPane.showInternalMessageDialog(null, "Fields are null");
+                }
             }
         });
 

@@ -99,14 +99,21 @@ public class FindPlaneTicket extends Container {
         buyButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Package pd3 = new Package("GET TICKET", Integer.parseInt(numberField.getText()) );
-                Main.connect(pd3);
+                if(!numberField.getText().equals( "" )) {
+                    Package pd3 = new Package("GET TICKET", Integer.parseInt(numberField.getText()));
+                    Main.connect(pd3);
 
-                Package pd2 = new Package("ADD CARD", Login.customer.getId(), ticket.getName(), ticket.getWhereFrom(), ticket.getWhere(), ticket.getDay(), ticket.getMonth(), ticket.getPlace());
-                Main.connect(pd2);
+                    Package pd2 = new Package("ADD CARD", Login.customer.getId(), ticket.getName(), ticket.getWhereFrom(), ticket.getWhere(), ticket.getDay(), ticket.getMonth(), ticket.getPlace());
+                    Main.connect(pd2);
+                    Package pd = new Package("DELETE TICKET", Integer.parseInt(numberField.getText()));
+                    Main.connect(pd);
 
-                Package pd = new Package("DELETE TICKET", Integer.parseInt(numberField.getText()));
-                Main.connect(pd);
+                    textArea.setText(null);
+                    numberField.setText(null);
+                }
+                else{
+                    JOptionPane.showInternalMessageDialog(null, "Fields are null");
+                }
             }
         });
 

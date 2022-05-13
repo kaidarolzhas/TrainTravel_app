@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import Class.*;
-import Frames.Login;
 
 public class DBManager {
     public static Connection connection = null;
@@ -15,33 +14,11 @@ public class DBManager {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/customer?useUnicode=true&serverTimezone=UTC", "root", "");
+                    "jdbc:mysql://localhost:3306/bd_olzhas?useUnicode=true&serverTimezone=UTC", "root", "");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
-    public boolean checkCustomer(String customerLogin, String customer_password) {
-        boolean check = false;
-        try {
-            PreparedStatement statement = connection.prepareStatement("" +
-                    "SELECT * FROM customer WHERE login = '" + customerLogin + "'" + "and password = '" + customer_password + "'");
-            ResultSet resultSet = statement.executeQuery();
-            if(resultSet.next()){
-                check = true;
-            }
-
-
-            statement.executeUpdate();
-            statement.close();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-        return check;
-    }
-
-
 
     public void addCustomer(Customer customer) {
         try {
@@ -59,10 +36,6 @@ public class DBManager {
             e.printStackTrace();
         }
     }
-
-
-
-
 
     public void addPlaneTicket(PlaneTicket planeTicket) {
         try {
@@ -86,12 +59,10 @@ public class DBManager {
         }
     }
 
-
-
     public void addCard(Integer customer_id, String name, String whereFrom, String wheree, int day, String month, int place) {
         try {
             PreparedStatement statement = connection.prepareStatement("" +
-                    "INSERT INTO card (id, customer_id, name, whereFrom, wheree, day, month, place) " +
+                    "INSERT INTO cart (id, customer_id, name, whereFrom, wheree, day, month, place) " +
                     "VALUES (NULL, ?, ?, ?, ?, ?, ?, ?)");
             statement.setInt(1, customer_id);
             statement.setString(2, name);
@@ -107,7 +78,6 @@ public class DBManager {
             e.printStackTrace();
         }
     }
-
 
     public void addTrainTicket(TrainTicket trainTicket) {
         try {
@@ -131,31 +101,11 @@ public class DBManager {
         }
     }
 
-    public ArrayList<Customer> getAllCustomer(){
-        ArrayList<Customer> customerList = new ArrayList<>();
-        try{
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM customer");
-            ResultSet resultSet = statement.executeQuery();
-
-            while(resultSet.next()){
-                Integer id = resultSet.getInt("id");
-                String login = resultSet.getString("login");
-                String password = resultSet.getString("password");
-                String name = resultSet.getString("name");
-                String surname = resultSet.getString("surname");
-                customerList.add(new Customer(id, name, surname, login, password));
-            }
-            statement.close();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return customerList;
-    }
     public ArrayList<Ticket> getCard(int customer_id){
         ArrayList<Ticket> ticketList = new ArrayList<>();
         try {
             PreparedStatement statement = connection.prepareStatement("" +
-                    "SELECT * FROM card WHERE customer_id = '" + customer_id + "'");
+                    "SELECT * FROM cart WHERE customer_id = '" + customer_id + "'");
 
             ResultSet resultSet = statement.executeQuery();
 
@@ -175,7 +125,6 @@ public class DBManager {
         }
         return ticketList;
     }
-
 
     public ArrayList<PlaneTicket> getAllPlaneTicket(){
         ArrayList<PlaneTicket> ticketList = new ArrayList<>();
@@ -226,30 +175,6 @@ public class DBManager {
         }
         return ticketList;
     }
-
-
-    public ArrayList<Ticket> getAllTicket(){
-        ArrayList<Ticket> ticketList = new ArrayList<>();
-        try{
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM ticket");
-            ResultSet resultSet = statement.executeQuery();
-
-            while(resultSet.next()){
-                Integer id = resultSet.getInt("id");
-                String whereFrom = resultSet.getString("whereFrom");
-                String where = resultSet.getString("where");
-                int price = resultSet.getInt("price");
-                int day = resultSet.getInt("day");
-                String month = resultSet.getString("month");
-                //ticketList.add(new Ticket(id, whereFrom, where, price, day, month));
-            }
-            statement.close();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return ticketList;
-    }
-
 
     public ArrayList<PlaneTicket> findPlaneTicket(PlaneTicket planeTicket){
         ArrayList<PlaneTicket> planeTicketList = new ArrayList<>();
@@ -358,6 +283,4 @@ public class DBManager {
         }
         return ticket;
     }
-
-
 }

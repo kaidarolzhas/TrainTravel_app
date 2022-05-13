@@ -10,10 +10,8 @@ import java.awt.event.ActionListener;
 
 public class Signup extends Container {
     public Signup(){
-
-        setSize(500, 500);
+        setSize(600, 400);
         setLayout(null);
-
 
         JLabel nameLabel = new JLabel("NAME:");
         nameLabel.setFont(new Font("Courier New", Font.PLAIN, 14));
@@ -78,11 +76,21 @@ public class Signup extends Container {
         singButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Customer new_customer = new Customer(null, nameField.getText(),  surnameField.getText(), loginField.getText(), passwordField.getText());
-                Package packageData = new Package("ADD CUSTOMER", new_customer);
-                Main.connect(packageData);
-                JOptionPane.showInternalMessageDialog(null,"SUCCESSFUL");
+                if(!loginField.getText().equals( "" )  && !passwordField.getText().equals( "" ) && !nameField.getText().equals( "" ) && !surnameField.getText().equals( "" ) && passwordField.getText().equals(passwordField2.getText())) {
+                        Customer new_customer = new Customer(null, nameField.getText(), surnameField.getText(), loginField.getText(), passwordField.getText());
+                        Package packageData = new Package("ADD CUSTOMER", new_customer);
+                        Main.connect(packageData);
 
+                        nameField.setText(null);
+                        surnameField.setText(null);
+                        loginField.setText(null);
+                        passwordField.setText(null);
+                        passwordField2.setText(null);
+
+                        JOptionPane.showInternalMessageDialog(null, "SUCCESSFUL");
+                }else{
+                    JOptionPane.showInternalMessageDialog(null, "Fields are null or Passwords are not same");
+                }
             }
         });
 

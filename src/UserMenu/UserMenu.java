@@ -3,8 +3,6 @@ import Main.*;
 import Database.Package;
 import Frames.Login;
 import Main.MainFrame;
-import com.mysql.cj.log.Log;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -31,7 +29,6 @@ public class UserMenu extends Container {
         textArea = new JTextArea();
         textArea.setBounds(100, 140, 400, 130);
         add(textArea);
-        textArea.setText(null);
 
         JButton backButton = new JButton("Back to menu");
         backButton.setBounds(100, 275, 400, 25);
@@ -56,9 +53,9 @@ public class UserMenu extends Container {
         myTicketsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                textArea.setText(null);
                 Package pd = new Package("LIST CARD", Login.customer.getId());
                 Main.connect(pd);
-
             }
         });
 

@@ -9,12 +9,8 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
 import Class.*;
-import Frames.Login;
-
-
 public class ServerThread extends Thread{
     private Socket socket;
-
     public ServerThread(Socket socket) {
         this.socket = socket;
     }
@@ -37,18 +33,15 @@ public class ServerThread extends Thread{
                     TrainTicket trainTicket = data.getTrainTicket();
                     manager.addTrainTicket(trainTicket);
                     break;
-                    
                 }
                 else if (data.getOperationType().equals("ADD PLANE TICKET")) {
                     PlaneTicket planeTicket = data.getPlaneTicket();
                     manager.addPlaneTicket(planeTicket);
                     break;
-
                 }
                 else if (data.getOperationType().equals("ADD CARD")) {
                     manager.addCard(data.getId(), data.getLogin(), data.getWhereFrom(), data.getWheree(), data.getDay(), data.getMonth(), data.getPlace());
                     break;
-
                 }
                 else if(data.getOperationType().equals("LIST TRAIN")){
                     ArrayList<TrainTicket> arrayTrain = manager.getAllTrainTicket();
@@ -57,7 +50,6 @@ public class ServerThread extends Thread{
                     outputStream.writeObject(trainList);
                     break;
                 }
-
                 else if(data.getOperationType().equals("LIST PLANE")){
                     ArrayList<PlaneTicket> arrayPlane = manager.getAllPlaneTicket();
                     Package planeList = new Package();
