@@ -43,7 +43,7 @@ public class Main {
                 String s = "";
 
                 for(int i=0; i< arrayListFromServer.size(); i++){
-                    s += arrayListFromServer.get(i).info()+ "\n";
+                    s += arrayListFromServer.get(i)+ "\n";
                 }
                 AdminMenu.textArea.setText(s);
             }
@@ -54,7 +54,7 @@ public class Main {
                 String s = "";
 
                 for(int i=0; i< arrayListFromServer.size(); i++){
-                    s += arrayListFromServer.get(i).info()+ "\n";
+                    s += arrayListFromServer.get(i)+ "\n";
                 }
                 AdminMenu.textArea.setText(s);
             }
@@ -65,7 +65,7 @@ public class Main {
                 String s = "";
 
                 for(int i=0; i< arrayListFromServer.size(); i++){
-                    s += arrayListFromServer.get(i).info()+ "\n";
+                    s += arrayListFromServer.get(i) + "\n";
                 }
                 FindTrainTicket.textArea.setText(s);
             }
@@ -76,7 +76,7 @@ public class Main {
                 String s = "";
 
                 for(int i=0; i< arrayListFromServer.size(); i++){
-                    s += arrayListFromServer.get(i).info()+ "\n";
+                    s += arrayListFromServer.get(i) + "\n";
                 }
                 FindPlaneTicket.textArea.setText(s);
             }

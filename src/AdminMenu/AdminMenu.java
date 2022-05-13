@@ -11,10 +11,8 @@ import java.awt.event.ActionListener;
 public class AdminMenu extends Container {
     public static JTextArea textArea;
     public AdminMenu(){
-
         setSize(600, 400);
         setLayout(null);
-
 
         JButton TrainButton = new JButton("Add train ticket");
         TrainButton.setBounds(75, 20, 400, 25);
@@ -41,14 +39,12 @@ public class AdminMenu extends Container {
         planeList.setBounds(375, 325, 100, 25);
         add(planeList);
 
-
-
         planeList.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                textArea.setText(null);
                 Package pd = new Package("LIST PLANE");
                 Main.connect(pd);
-
             }
         });
 
@@ -58,8 +54,6 @@ public class AdminMenu extends Container {
                 textArea.setText(null);
                 Package pd = new Package("LIST TRAIN");
                 Main.connect(pd);
-
-
             }
         });
 
@@ -68,7 +62,6 @@ public class AdminMenu extends Container {
             public void actionPerformed(ActionEvent e) {
                 MainFrame.addTrainTicket.setVisible(true);
                 MainFrame.adminMenu.setVisible(false);
-
             }
         });
 
@@ -77,22 +70,15 @@ public class AdminMenu extends Container {
             public void actionPerformed(ActionEvent e) {
                 MainFrame.addPlaneTicket.setVisible(true);
                 MainFrame.adminMenu.setVisible(false);
-
             }
         });
-
-
 
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 MainFrame.mainMenu.setVisible(true);
                 MainFrame.adminMenu.setVisible(false);
-
             }
         });
     }
-
-
-
 }

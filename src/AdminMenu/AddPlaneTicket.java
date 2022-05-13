@@ -1,5 +1,4 @@
 package AdminMenu;
-
 import Database.Package;
 import Main.*;
 import Class.PlaneTicket;
@@ -36,7 +35,6 @@ public class AddPlaneTicket extends Container {
         dayLabel.setBounds(350, 100, 95, 30);
         add(dayLabel);
 
-
         JLabel priceLabel = new JLabel("Price");
         priceLabel.setBounds(450, 100, 95, 30);
         add(priceLabel);
@@ -56,8 +54,6 @@ public class AddPlaneTicket extends Container {
         JTextField priceField = new JTextField();
         priceField.setBounds(450, 150, 95, 30);
         add(priceField);
-
-
 
         JTextField dayField = new JTextField();
         dayField.setBounds(350, 150, 95, 30);
@@ -87,8 +83,6 @@ public class AddPlaneTicket extends Container {
         NameField.setBounds(150, 250, 95, 30);
         add(NameField);
 
-
-
         JButton findButton = new JButton("Add");
         findButton.setBounds(450, 200, 95, 30);
         add(findButton);
@@ -100,23 +94,20 @@ public class AddPlaneTicket extends Container {
         findButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 PlaneTicket planeTicket = new PlaneTicket(
                         null, (String)NameField.getSelectedItem(), whereFromField.getText(), whereField.getText(),
                         Integer.parseInt(priceField.getText()), Integer.parseInt(dayField.getText()),(String)typeMonthField.getSelectedItem(),
                         Integer.parseInt(placeField.getText()), (String) LuggageField.getSelectedItem()
-
-
-
-                        );
+                );
 
                 Package pd = new Package("ADD PLANE TICKET", planeTicket);
                 Main.connect(pd);
 
-
-
-
-
+                whereFromField.setText(null);
+                whereField.setText(null);
+                priceField.setText(null);
+                dayField.setText(null);
+                placeField.setText(null);
             }
         });
 
@@ -128,8 +119,6 @@ public class AddPlaneTicket extends Container {
             }
         });
     }
-
-
-    }
+}
 
 

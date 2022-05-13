@@ -25,4 +25,9 @@ public class PlaneTicket extends Ticket implements Serializable {
     public void setLuggage(String luggage) {
         this.luggage = luggage;
     }
+
+    @Override
+    public String toString() {
+        return getId() + ") " + getWhereFrom() + "-->" + getWhere() + ", Day:" + getDay() + ", Month:" + getMonth() + ", Price:" + getPrice() + ", Place:" + getPlace() + ", Luggage:" + luggage;
+    }
 }

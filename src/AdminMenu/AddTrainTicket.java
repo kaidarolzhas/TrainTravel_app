@@ -8,15 +8,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.net.Inet4Address;
 
 public class AddTrainTicket extends Container {
     public AddTrainTicket(){
-
         setSize(600, 400);
         setLayout(null);
 
-        String[] typeTrain = {"Kupe", "Talgo"};
+        String[] typeTrain = {"Compartment", "ReservedSeat"};
 
         String[] typeMonth = {"January", "February", "March", "April", "May", "June", "July", "August", "September",
                 "October", "November", "December"};
@@ -36,7 +34,6 @@ public class AddTrainTicket extends Container {
         JLabel dayLabel = new JLabel("Day");
         dayLabel.setBounds(350, 100, 95, 30);
         add(dayLabel);
-
 
         JLabel priceLabel = new JLabel("Price");
         priceLabel.setBounds(450, 100, 95, 30);
@@ -58,8 +55,6 @@ public class AddTrainTicket extends Container {
         priceField.setBounds(450, 150, 95, 30);
         add(priceField);
 
-
-
         JTextField dayField = new JTextField();
         dayField.setBounds(350, 150, 95, 30);
         add(dayField);
@@ -80,9 +75,7 @@ public class AddTrainTicket extends Container {
         placeField.setBounds(450, 300, 95, 30);
         add(placeField);
 
-
         String name = "Kazakhstan";
-
 
         JButton findButton = new JButton("Add");
         findButton.setBounds(450, 200, 95, 30);
@@ -104,8 +97,11 @@ public class AddTrainTicket extends Container {
                 Package pd = new Package("ADD TRAIN TICKET", trainTicket);
                 Main.connect(pd);
 
-
-
+                whereFromField.setText(null);
+                whereField.setText(null);
+                priceField.setText(null);
+                dayField.setText(null);
+                placeField.setText(null);
             }
         });
 
