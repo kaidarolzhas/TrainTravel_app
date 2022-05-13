@@ -15,6 +15,7 @@ import java.sql.ResultSet;
 import static Database.DBManager.connection;
 
 public class Login extends Container {
+    public static Integer customer_id;
     public Login(){
 
         setSize(600,400);
@@ -65,6 +66,7 @@ public class Login extends Container {
                     PreparedStatement statement = connection.prepareStatement("" +
                             "SELECT * FROM customer WHERE login = '" + loginField.getText() + "'" + "and password = '" + passwordField.getText() + "'");
                     ResultSet resultSet = statement.executeQuery();
+                    customer_id = resultSet.getInt("id");
 
                     if(resultSet.next()){
                         Main.frame.login.setVisible(false);
