@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import Class.*;
+import Frames.Login;
 
 public class DBManager {
     public static Connection connection = null;
@@ -77,6 +78,26 @@ public class DBManager {
             statement.setInt(7, planeTicket.getPlace());
             statement.setString(8, planeTicket.getLuggage());
             statement.setInt(9, 2);
+
+            statement.executeUpdate();
+            statement.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void addCard(TrainTicket trainTicket) {
+        try {
+            PreparedStatement statement = connection.prepareStatement("" +
+                    "INSERT INTO card (id, customer_id, wheree, whereFrom ,name, day, month, place) " +
+                    "VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            statement.setInt(1, Login.customer_id);
+            statement.setString(2, trainTicket.getWhere());
+            statement.setString(3, trainTicket.getWhereFrom());
+            statement.setString(4, trainTicket.getName());
+            statement.setInt(5, trainTicket.getDay());
+            statement.setString(6, trainTicket.getMonth());
+            statement.setInt(7, trainTicket.getPlace());
 
             statement.executeUpdate();
             statement.close();
