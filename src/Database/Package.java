@@ -12,12 +12,44 @@ public class Package implements Serializable {
     private Integer ticket_id;
     private int id;
     private String login;
+    private String whereFrom;
+    private String wheree;
+    private int day;
+    private String month;
+    private int place;
+    private Ticket ticket;
 
     private ArrayList<PlaneTicket> planeTickets;
     private ArrayList<TrainTicket> trainTickets;
     private ArrayList<Customer> customers;
 
+    //public void addCard(Integer customer_id, String name, String whereFrom, String wheree, int day, String month, int place) {
     public Package() {
+    }
+
+    public Package(Ticket ticket) {
+        this.ticket = ticket;
+    }
+
+    public Package(int id, String login, String whereFrom, String wheree, int day, String month, int place) {
+        this.id = id;
+        this.login = login;
+        this.whereFrom = whereFrom;
+        this.wheree = wheree;
+        this.day = day;
+        this.month = month;
+        this.place = place;
+    }
+
+    public Package(String operationType, int id, String login, String whereFrom, String wheree, int day, String month, int place) {
+        this.operationType = operationType;
+        this.id = id;
+        this.login = login;
+        this.whereFrom = whereFrom;
+        this.wheree = wheree;
+        this.day = day;
+        this.month = month;
+        this.place = place;
     }
 
     public Package(Customer customer) {
@@ -153,5 +185,53 @@ public class Package implements Serializable {
 
     public void setTicket_id(Integer ticket_id) {
         this.ticket_id = ticket_id;
+    }
+
+    public String getWhereFrom() {
+        return whereFrom;
+    }
+
+    public void setWhereFrom(String whereFrom) {
+        this.whereFrom = whereFrom;
+    }
+
+    public String getWheree() {
+        return wheree;
+    }
+
+    public void setWheree(String wheree) {
+        this.wheree = wheree;
+    }
+
+    public int getDay() {
+        return day;
+    }
+
+    public void setDay(int day) {
+        this.day = day;
+    }
+
+    public String getMonth() {
+        return month;
+    }
+
+    public void setMonth(String month) {
+        this.month = month;
+    }
+
+    public int getPlace() {
+        return place;
+    }
+
+    public void setPlace(int place) {
+        this.place = place;
+    }
+
+    public Ticket getTicket() {
+        return ticket;
+    }
+
+    public void setTicket(Ticket ticket) {
+        this.ticket = ticket;
     }
 }

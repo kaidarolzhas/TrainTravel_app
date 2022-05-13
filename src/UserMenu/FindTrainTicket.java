@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 
 public class FindTrainTicket extends Container {
     public static JTextArea textArea;
+    public static Ticket ticket;
     public FindTrainTicket(){
         setSize(600, 400);
         setLayout(null);
@@ -99,7 +100,10 @@ public class FindTrainTicket extends Container {
         buyButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Package pd2 = new Package("ADD CARD", Login.customer.getId(),Integer.parseInt(numberField.getText()));
+                Package pd3 = new Package("GET TICKET", Integer.parseInt(numberField.getText()) );
+                Main.connect(pd3);
+
+                Package pd2 = new Package("ADD CARD", Login.customer.getId(), ticket.getName(), ticket.getWhereFrom(), ticket.getWhere(), ticket.getDay(), ticket.getMonth(), ticket.getPlace());
                 Main.connect(pd2);
                 //Package pd = new Package("DELETE TICKET", Integer.parseInt(numberField.getText()));
                 //Main.connect(pd);

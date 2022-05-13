@@ -87,6 +87,14 @@ public class Main {
 
                 Login.customer = customer;
             }
+            else if(pd.getOperationType().equals("GET TICKET")){
+                outputStream.writeObject(pd);
+                Package infoFromServer = (Package)inputStream.readObject();
+                Ticket customer = infoFromServer.getTicket();
+
+                FindPlaneTicket.ticket = customer;
+                FindTrainTicket.ticket = customer;
+            }
 
         }catch (Exception e){
             e.printStackTrace();

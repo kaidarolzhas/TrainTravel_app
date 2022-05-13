@@ -34,6 +34,15 @@ public class Ticket implements Serializable {
         this.month = month;
     }
 
+    public Ticket(String name, String whereFrom, String where, int day, String month, int place) {
+        this.name = name;
+        this.whereFrom = whereFrom;
+        this.where = where;
+        this.day = day;
+        this.month = month;
+        this.place = place;
+    }
+
     public Integer getId() {
         return id;
     }

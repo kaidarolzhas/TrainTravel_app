@@ -11,6 +11,7 @@ import Class.*;
 
 public class FindPlaneTicket extends Container {
     public static JTextArea textArea;
+    public static Ticket ticket;
     public FindPlaneTicket(){
         setSize(600, 400);
         setLayout(null);
@@ -18,7 +19,7 @@ public class FindPlaneTicket extends Container {
         String[] typeMonth = {"January", "February", "March", "April", "May", "June", "July", "August", "September",
                 "October", "November", "December"};
 
-        String[] typeLuggage = {"true", "false"};
+        String[] typeLuggage = {"yes", "no"};
 
         JLabel whereFromLabel = new JLabel("Where from");
         whereFromLabel.setBounds(50, 50, 70, 30);
@@ -98,7 +99,10 @@ public class FindPlaneTicket extends Container {
         buyButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Package pd2 = new Package("ADD CARD", Login.customer.getId(),Integer.parseInt(numberField.getText()));
+                Package pd3 = new Package("GET TICKET", Integer.parseInt(numberField.getText()) );
+                Main.connect(pd3);
+
+                Package pd2 = new Package("ADD CARD", Login.customer.getId(), ticket.getName(), ticket.getWhereFrom(), ticket.getWhere(), ticket.getDay(), ticket.getMonth(), ticket.getPlace());
                 Main.connect(pd2);
 
                 //Package pd = new Package("DELETE TICKET", Integer.parseInt(numberField.getText()));

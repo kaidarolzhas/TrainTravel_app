@@ -88,13 +88,18 @@ public class DBManager {
 
 
 
-    public void addCard(Integer customer_id, Integer ticket_id) {
+    public void addCard(Integer customer_id, String name, String whereFrom, String wheree, int day, String month, int place) {
         try {
             PreparedStatement statement = connection.prepareStatement("" +
-                    "INSERT INTO cart (id, customer_id, ticket_id) " +
-                    "VALUES (NULL, ?, ?)");
+                    "INSERT INTO cart (id, customer_id, name, whereFrom, wheree, day, month, place) " +
+                    "VALUES (NULL, ?, ?, ?, ?, ?, ?, ?)");
             statement.setInt(1, customer_id);
-            statement.setInt(2, ticket_id);
+            statement.setString(2, name);
+            statement.setString(3, whereFrom);
+            statement.setString(4, wheree);
+            statement.setInt(5, day);
+            statement.setString(6, month);
+            statement.setInt(7, place);
 
             statement.executeUpdate();
             statement.close();
@@ -305,4 +310,28 @@ public class DBManager {
         }
         return customer;
     }
+
+    public Ticket getTicket(int idka){
+        Ticket ticket = new Ticket();
+        try{
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM ticket WHERE id = '" + idka + "'");
+            ResultSet resultSet = statement.executeQuery();
+
+            while(resultSet.next()){
+                String name = resultSet.getString("name");
+                String whereFrom = resultSet.getString("whereFrom");
+                String where = resultSet.getString("wheree");
+                int day = resultSet.getInt("day");
+                String month = resultSet.getString("month");
+                int place = resultSet.getInt("place");
+                ticket = new Ticket(name, whereFrom, where, day, month, place);
+            }
+            statement.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return ticket;
+    }
+
+
 }

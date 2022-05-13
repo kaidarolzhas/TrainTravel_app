@@ -8,6 +8,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
+import Class.*;
 
 
 public class ServerThread extends Thread{
@@ -44,7 +45,7 @@ public class ServerThread extends Thread{
 
                 }
                 else if (data.getOperationType().equals("ADD CARD")) {
-                    manager.addCard(data.getCustomer_id(), data.getTicket_id());
+                    manager.addCard(data.getId(), data.getLogin(), data.getWhereFrom(), data.getWheree(), data.getDay(), data.getMonth(), data.getPlace());
                     break;
 
                 }
@@ -84,6 +85,12 @@ public class ServerThread extends Thread{
                 }
                 else if(data.getOperationType().equals("GET CUSTOMER")){
                     Customer customer = manager.getCustomer(data.getLogin());
+                    Package toPercussion = new Package(customer);
+                    outputStream.writeObject(toPercussion);
+                    break;
+                }
+                else if(data.getOperationType().equals("GET TICKET")){
+                    Ticket customer = manager.getTicket(data.getId());
                     Package toPercussion = new Package(customer);
                     outputStream.writeObject(toPercussion);
                     break;
