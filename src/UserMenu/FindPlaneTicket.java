@@ -1,5 +1,6 @@
 package UserMenu;
 import Database.Package;
+import Frames.Login;
 import Main.Main;
 import Main.MainFrame;
 import javax.swing.*;
@@ -99,6 +100,8 @@ public class FindPlaneTicket extends Container {
             public void actionPerformed(ActionEvent e) {
                 Package pd = new Package("DELETE TICKET", Integer.parseInt(numberField.getText()));
                 Main.connect(pd);
+                Package pd2 = new Package("ADD CARD", Login.customer.getId(),Integer.parseInt(numberField.getText()));
+                Main.connect(pd2);
             }
         });
 
