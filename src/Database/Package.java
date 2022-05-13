@@ -8,6 +8,7 @@ public class Package implements Serializable {
     private Customer customer;
     private TrainTicket trainTicket;
     private PlaneTicket planeTicket;
+    private int id;
 
     private ArrayList<PlaneTicket> planeTickets;
     private ArrayList<TrainTicket> trainTickets;
@@ -16,6 +17,10 @@ public class Package implements Serializable {
     public Package() {
     }
 
+    public Package(String operationType, int id) {
+        this.operationType = operationType;
+        this.id = id;
+    }
 
     public Package(String operationType, PlaneTicket planeTicket) {
         this.operationType = operationType;
@@ -98,5 +103,13 @@ public class Package implements Serializable {
 
     public void setPlaneTicket(PlaneTicket planeTicket) {
         this.planeTicket = planeTicket;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

@@ -72,7 +72,11 @@ public class ServerThread extends Thread{
                     outputStream.writeObject(planeList);
                     break;
                 }
-
+                else if(data.getOperationType().equals("DELETE TICKET")){
+                    int idTicket = data.getId();
+                    manager.deleteTicket(idTicket);
+                    break;
+                }
             }
         }catch (Exception e){
             e.printStackTrace();

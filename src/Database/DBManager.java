@@ -255,4 +255,15 @@ public class DBManager {
         }
         return trainTicketList;
     }
+
+    public void deleteTicket(Integer id){
+        try{
+            PreparedStatement statement = connection.prepareStatement("" + "DELETE FROM ticket WHERE id = ?");
+            statement.setInt(1, id);
+            statement.executeUpdate();
+            statement.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }
