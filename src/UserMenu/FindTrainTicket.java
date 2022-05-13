@@ -98,7 +98,8 @@ public class FindTrainTicket extends Container {
         buyButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                Package pd = new Package("DELETE TICKET", Integer.parseInt(numberField.getText()));
+                Main.connect(pd);
             }
         });
 
