@@ -43,6 +43,12 @@ public class ServerThread extends Thread{
                     break;
 
                 }
+                else if (data.getOperationType().equals("ADD CARD")) {
+                    PlaneTicket planeTicket = data.getPlaneTicket();
+                    manager.addPlaneTicket(planeTicket);
+                    break;
+
+                }
                 else if(data.getOperationType().equals("LIST TRAIN")){
                     ArrayList<TrainTicket> arrayTrain = manager.getAllTrainTicket();
                     Package trainList = new Package();

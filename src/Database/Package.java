@@ -8,6 +8,8 @@ public class Package implements Serializable {
     private Customer customer;
     private TrainTicket trainTicket;
     private PlaneTicket planeTicket;
+    private Integer customer_id;
+    private Integer ticket_id;
     private int id;
     private String login;
 
@@ -25,6 +27,12 @@ public class Package implements Serializable {
     public Package(String operationType, String login) {
         this.operationType = operationType;
         this.login = login;
+    }
+
+    public Package(String operationType, Integer customer_id, Integer ticket_id) {
+        this.operationType = operationType;
+        this.customer_id = customer_id;
+        this.ticket_id = ticket_id;
     }
 
     public Package(String operationType, int id) {
@@ -129,5 +137,21 @@ public class Package implements Serializable {
 
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    public Integer getCustomer_id() {
+        return customer_id;
+    }
+
+    public void setCustomer_id(Integer customer_id) {
+        this.customer_id = customer_id;
+    }
+
+    public Integer getTicket_id() {
+        return ticket_id;
+    }
+
+    public void setTicket_id(Integer ticket_id) {
+        this.ticket_id = ticket_id;
     }
 }

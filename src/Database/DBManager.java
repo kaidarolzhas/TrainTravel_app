@@ -86,18 +86,15 @@ public class DBManager {
         }
     }
 
-    public void addCard(TrainTicket trainTicket) {
+
+
+    public void addCard(Integer ticket_id, Integer customer_id) {
         try {
             PreparedStatement statement = connection.prepareStatement("" +
-                    "INSERT INTO card (id, customer_id, wheree, whereFrom ,name, day, month, place) " +
-                    "VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            statement.setInt(1, Login.customer_id);
-            statement.setString(2, trainTicket.getWhere());
-            statement.setString(3, trainTicket.getWhereFrom());
-            statement.setString(4, trainTicket.getName());
-            statement.setInt(5, trainTicket.getDay());
-            statement.setString(6, trainTicket.getMonth());
-            statement.setInt(7, trainTicket.getPlace());
+                    "INSERT INTO card (id, customer_id, ticket_id) " +
+                    "VALUES (NULL, ?, ?)");
+            statement.setInt(1, customer_id);
+            statement.setInt(2, ticket_id);
 
             statement.executeUpdate();
             statement.close();

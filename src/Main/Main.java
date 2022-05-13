@@ -17,7 +17,7 @@ public class Main {
 
     public static void connect(Package pd){
         try{
-            Socket socket = new Socket("127.0.0.1", 5000);
+            Socket socket = new Socket("127.0.0.1", 8000);
             ObjectOutputStream outputStream = new ObjectOutputStream(socket.getOutputStream());
             ObjectInputStream inputStream = new ObjectInputStream(socket.getInputStream());
 
@@ -29,6 +29,10 @@ public class Main {
 
             }
             else if (pd.getOperationType().equals("ADD PLANE TICKET")) {
+                outputStream.writeObject(pd);
+
+            }
+            else if (pd.getOperationType().equals("ADD CARD")) {
                 outputStream.writeObject(pd);
 
             }

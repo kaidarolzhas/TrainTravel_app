@@ -5,7 +5,7 @@ import javax.swing.*;
 import Database.DBManager;
 import Database.Package;
 import Main.Main;
-import Class.*;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,7 +15,7 @@ import java.sql.ResultSet;
 import static Database.DBManager.connection;
 
 public class Login extends Container {
-    public static Customer customer;
+    public static Integer customer;
     public Login(){
 
         setSize(600,400);
@@ -66,19 +66,21 @@ public class Login extends Container {
                     PreparedStatement statement = connection.prepareStatement("" +
                             "SELECT * FROM customer WHERE login = '" + loginField.getText() + "'" + "and password = '" + passwordField.getText() + "'");
                     ResultSet resultSet = statement.executeQuery();
-
-                    Package pd = new Package("GET CUSTOMER", loginField.getText());
-                    Main.connect(pd);
+                    customer_id = resultSet.getInt("id");
 
                     if(resultSet.next()){
                         Main.frame.login.setVisible(false);
                         Main.frame.userMenu.setVisible(true);
                         JOptionPane.showInternalMessageDialog(null,"WELCOME");
+
+
                     }
 
                     else if(loginField.getText().equals("admin") && passwordField.getText().equals("password")){
                         Main.frame.login.setVisible(false);
                         Main.frame.adminMenu.setVisible(true);
+
+
                     }
 
                 }catch (Exception a){
