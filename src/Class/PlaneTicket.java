@@ -28,6 +28,6 @@ public class PlaneTicket extends Ticket implements Serializable {
 
     @Override
     public String toString() {
-        return getId() + ") " + getWhereFrom() + "-->" + getWhere() + ", Day:" + getDay() + ", Month:" + getMonth() + ", Price:" + getPrice() + ", Place:" + getPlace() + ", Luggage:" + luggage;
+        return getId() + ") " + getWhereFrom() + "-->" + getWhere() + ", Day:" + getDay() + ", Month:" + getMonth() + ", Price:" + getPrice() + '\n'+ ", Place:" + getPlace() + ", Luggage:" + luggage;
     }
 }

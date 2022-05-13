@@ -18,7 +18,7 @@ public class TrainTicket extends Ticket implements Serializable {
 
     @Override
     public String toString() {
-        return getId() + ") " + getWhereFrom() + "-->" + getWhere() + ", Day:" + getDay() + ", Month:" + getMonth() + ", Price:" + getPrice() + ", Place:" + getPlace() + ", Type:" + type;
+        return getId() + ") " + getWhereFrom() + "-->" + getWhere() + ", Day:" + getDay() + ", Month:" + getMonth() + '\n' + "Price:" + getPrice() + ", Place:" + getPlace() + ", Type:" + type;
     }
 
     public String getType() {
