@@ -18,7 +18,7 @@ public class Main {
 
     public static void connect(Package pd){
         try{
-            Socket socket = new Socket("127.0.0.1", 8000);
+            Socket socket = new Socket("127.0.0.1", 3000);
             ObjectOutputStream outputStream = new ObjectOutputStream(socket.getOutputStream());
             ObjectInputStream inputStream = new ObjectInputStream(socket.getInputStream());
 
